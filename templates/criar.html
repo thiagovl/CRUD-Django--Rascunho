@@ -7,10 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    {%for doc in docs %}
-    <p>ID: {{ doc.id }}</p>
-        <P>Nome: {{ doc.nome }}</P>
-    {% endfor %} 
-
+    <form action="/criar/submit" method="POST">{% csrf_token %} 
+        <input type="text" name="nome">
+            <button type="submit">
+                Cadastrar
+            </button>
+    </form>
 </body>
 </html>

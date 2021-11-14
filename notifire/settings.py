@@ -12,9 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
 
-from decouple import config, Csv
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,36 +134,11 @@ FIREBASE_ADMIN_CERT = {
     'type': config('TYPE', default='', cast=str),
     'project_id': config('PROJECT_ID', default='', cast=str),
     'private_key_id': config('PRIVATE_KEY_ID', default='', cast=str),
-    'private_key': config('PRIVATE_KEY', default='', cast=str),
+    'private_key': config('PRIVATE_KEY', default='', cast=str).replace('\\n', '\n'),
     'client_email': config('CLIENT_EMAIL', default='', cast=str),
     'client_id': config('CLIENT_ID', default='', cast=str),
     'auth_uri': config('AUTH_URI', default='', cast=str),
     'token_uri': config('TOKEN_URI', default='', cast=str),
     'auth_provider_x509_cert_url': config('AUTH_PROVIDER_X509_CERT_URL', default='', cast=str),
-    'client_x509_cert_url': config('CLIENT_X509_CERT_URL', default='', cast=str),
+    'client_x509_cert_url': config('CLIENT_X509_CERT_URL', default='', cast=str)
 }
-# os.system("export TYPE=service_account".format(str))
-# os.system("export PROJECT_ID=dashboard-35382".format(str))
-# os.system("export PRIVATE_KEY_ID=d1af8a0e6b1ca7e44e82327ee5434b9db368df06".format(str))
-# os.system("export PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDP9KOxVrmDM5/+\nzrdVtAlcGc9PBpyY8nKbspMh80DRoZG3G3L9VsK72h9u5lO28uOC8EdqcoAXkDqA\npfJTWi6HKaeMWkD0kB0T8BBcU7NYnxMv8YS7zgDyVbNnmTk176aUarzbHVVQn7ZI\nKGmdm8KgLOhyMuOSIljbYMwa59CpuJeTJjKTZE4SAGNjHa2CuOo4lNdqPLLY6/tT\nXj8c8Vl/ohylR5P6uPncXUigV0vZKYeipdca1ZiLkroFx88LjOpaAFUgjFoTWP5Y\nRXGXQ9j3XdSmj5yOrjLI1XtS8ntimvGZ/B/ndHW6O0TvcvtZrFM+KXD1DezbdnhX\nx+Duv19lAgMBAAECggEAS9A35zyjSEJHZ5lMPFn0+ZdNPVW/PIFTKBEb08o/jM1W\n9sbyjoqVVu/n+sHMrktxhzh7CMMykKSbt3AIXrvnb45Pj3sN6Dsr5qtkA4zeOwZP\nc/Ccf+1T6gU1cSTqtw+mDsC1Fjrk8g4v4bGeA4AYHdYRbiTAU3PjKiNpdbuilmTV\nvrOQhU605t+O5Y2AvOjHrqIfnmGB3pKwLp6o3zqHIg3eUsrKSuhaTLcHGl7jvVo4\nWEZ/yGhzaYp/SxGo5a2qIFiAvwmqqG5ghwooim1z2ZYg/3CWXlloqwCTpDbLsaMN\nFzC1q3e6FwzdVlX3P2A+uxMhF7rrRk8ypz5c8voElwKBgQDvnOo3l/TEKuwo1t10\nmlsj8QWvtEv2YF1bAlOfhOo7S6UGK7EAVy3/3K5gdvHav/JBnSproWBRiMBavZP6\n/b3etrpMwXppUE8OXobqbLFCW6FQV1eN0bOKq6icvY5BAx/q7K9ts/+lf5MDS29/\nnMJHu1guGIxc8iIKdIjvlqVV+wKBgQDeLXnL1stjSqEc5NMd/k9K7Y2DWQg/MbuM\n0WTjn1d1PiQIEp59E7aNBOyvJ8tj/eu2LVpgDFqE+rY0g4ZQxNocRa38P06yI5U3\nu4cQDO46UpOxbZrWi7yn+GOkKgPmG7aMhvmzrCA7M4mwTg1QKyFzBvqYts0UOsyL\n3NEgSsoCHwKBgQCaFa4IUg90lqWHHaULdrdlRXkCpE61AQMHo1djHXYC64ITlcUd\nEvLhtmfsYJDmushuqUK+M+hchjQsJf0jSkjvD1J+SW0OjDZKZz8bQQo8QfBaWdBT\nwqZSZlDnen4gEIJV8B5fzYB4TLGdTMVGqufEeRUbj22z14FMd+QXLijkQQKBgQCc\nfamJMvzFLh63LFGrkaGmJBaGCqLtaAkzUZXfYi+G7EMS0JKDhOwS/gH8CWqQPpzV\nD7LVbj4f5juKV422vEDoowe+YZT7kmaa/+JNIt51hA51bb8fGQPDyAfe7J0cai61\nYqjkrftx14ZHAWMNMaP40lSWVkOy2QuUA+/k7+jDfwKBgBz+hMjxKIALf1vkfF/V\nrgM+VF6CkbKQtgm4G+R1uUaqwNIEP46HLoM0XO3jS06ctYwyG0bIzr67rmhhg3HR\niwBo0LpUEdQauaGTY7Faon8CPxsYQ3UhyFxyuTrC7RrlSgol3XyqpP5Xnk0oALmF\nCh3N3ku+M8IZ+mRRjtOmDTVx\n-----END PRIVATE KEY-----\n".format(str))
-# os.system("export CLIENT_EMAIL=firebase-adminsdk-rfoyo@dashboard-35382.iam.gserviceaccount.com")
-# os.system("export CLIENT_ID=108827980940387515858".format(str))
-# os.system("export AUTH_URI=https://accounts.google.com/o/oauth2/auth".format(str))
-# os.system("export TOKEN_URI=https://oauth2.googleapis.com/token".format(str))
-# os.system("export AUTH_PROVIDER_X509_CERT_URL=https://www.googleapis.com/oauth2/v1/certs".format(str))
-# os.system("export CLIENT_X509_CERT_URL=https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-rfoyo%40dashboard-35382.iam.gserviceaccount.com".format(str))
-
-# FIREBASE_ADMIN_CERT = {
-#     'type': os.environ.get('TYPE'),
-#     'project_id': os.environ.get('PROJECT_ID'),
-#     'private_key_id': os.environ.get('PRIVATE_KEY_ID'),
-#     'private_key': os.environ.get('PRIVATE_KEY'),
-#     'client_email': os.environ.get('CLIENT_EMAIL'),
-#     'client_id': os.environ.get('CLIENT_ID'),
-#     'auth_uri': os.environ.get('AUTH_URI'),
-#     'token_uri': os.environ.get('TOKEN_URI'),
-#     'auth_provider_x509_cert_url': os.environ.get('AUTH_PROVIDER_X509_CERT_URL'),
-#     'client_x509_cert_url': os.environ.get('CLIENT_X509_CERT_URL'),
-# }
-
-# FIREBASE_ADMIN_CERT = config('FIREBASE_ADMIN_CERT')

@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    {%for doc in docs %}
-    <p>ID: {{ doc.id }}</p>
-        <P>Nome: {{ doc.nome }}</P>
-    {% endfor %} 
+    <p> {{ docs.0.id }} </p>
+    <p> {{ docs.0.nome }} </p>
+
+    <a href="/delete/submit/{{ docs.0.id }}">
+        <button type="button">
+            Delete
+        </button>
+    </a>
+
 
 </body>
+
 </html>
