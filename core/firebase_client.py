@@ -43,7 +43,8 @@ class FirebaseClient:
         id = doc_ref.id
         data = {
             'id': id,
-            'nome': data['nome']
+            'nome': data['nome'],
+            'tags': data['tags']
         }
         doc_ref.set(data)
         
@@ -60,15 +61,11 @@ class FirebaseClient:
 
     # Listando consulta
     def filter(self, name):
-
-        
-        docs = self._collection.where("nome", ">=", name).get()
-        if not docs:
-            docs = self._collection.where("nome", "<=", name).get()
-        # docs = self._collection.where('nome', '=', 'Criado agora')
-        # if docs.exists:
-        #     return docs #{**doc.to_dict(), "nome": doc.id}
-        # for doc in docs:
-        #     print(doc.to_dict())
-
+        docs = {}
+        docs = self._collection.where("tags", "array_contains", name).get()
+        # if docs is not empty:
+        #     return docs
+        # else:
+        #     docs = self._collection.where("nome", "<=", name).get()
         return docs
+

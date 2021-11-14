@@ -28,8 +28,11 @@ def vcriar(request):
 
 # Inserindo dados
 def inserir(request):
+    aux = request.POST.get('tags')
+    tags = aux.split()
     data = {
-        'nome': request.POST.get('nome')
+        'nome': request.POST.get('nome'),
+        'tags': tags
     }
 
     client = FirebaseClient()
