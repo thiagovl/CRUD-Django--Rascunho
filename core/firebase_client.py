@@ -1,7 +1,7 @@
+from django.utils.functional import empty
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-
 from django.conf import settings
 
 class FirebaseClient:
@@ -57,3 +57,18 @@ class FirebaseClient:
     def delete_by_id(self, id):
         """Delete todo on firestore database using document id"""
         self._collection.document(id).delete()
+
+    # Listando consulta
+    def filter(self, name):
+
+        
+        docs = self._collection.where("nome", ">=", name).get()
+        if not docs:
+            docs = self._collection.where("nome", "<=", name).get()
+        # docs = self._collection.where('nome', '=', 'Criado agora')
+        # if docs.exists:
+        #     return docs #{**doc.to_dict(), "nome": doc.id}
+        # for doc in docs:
+        #     print(doc.to_dict())
+
+        return docs

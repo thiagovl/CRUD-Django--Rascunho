@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import delete, index, list, list_id, inserir, update, vcriar, vupdate, vdelete
+from core.views import delete, index, list, list_id, inserir, update, vcriar, vupdate, vdelete, filter, vfilter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +28,6 @@ urlpatterns = [
     path('update/submit/<id>', update),
     path('vdelete/<id>/', vdelete),
     path('delete/submit/<id>/', delete),
+    path('vfilter/', vfilter),
+    path('filter/submit', filter),
 ]

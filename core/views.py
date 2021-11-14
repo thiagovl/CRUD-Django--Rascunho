@@ -72,3 +72,18 @@ def delete(request, id):
     client = FirebaseClient()
     client.delete_by_id(id)
     return redirect('/list/')
+
+def vfilter(request):
+    return render(request, 'vfilter.html')
+
+def filter(request):
+    name = request.POST.get('nome')
+    client = FirebaseClient()
+    docs = client.filter(name)
+    
+    context = {
+        'docs': [doc.to_dict() for doc in docs]
+        }
+    return render(request, 'filter.html', context)
+    
+
